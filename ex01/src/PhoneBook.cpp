@@ -61,10 +61,35 @@ void PhoneBook::searchContact(){
 		std::cout << formatResult(contacts[i].getNickname()) << "|" << std::endl;
 	}
 	std::cout << "|__________|__________|__________|__________|" << std::endl;
+	std::cout << std::endl;
 }
 
-void PhoneBook::displayContact(int index){
-	std::cout << index;
+void PhoneBook::displayContact(){
+	int i;
+
+	i = -1;
+	if (index > 0)
+	{
+		std::cout << "- Choose an index: ";
+		std::cin >> i;
+		if (i < 0 || i > index - 1)
+		{
+			std::cout << "---------------------------" << std::endl;
+			std::cout << "----- Invalid index! ------" << std::endl;
+			std::cout << std::endl;
+			return ;
+		}
+		std::cout << "---------------------------" << std::endl;
+		std::cout << "------ CONTACT INFO -------" << std::endl;
+		std::cout << " Index: " << i << std::endl;
+		std::cout << " First name: " << contacts[i].getFirstName() << std::endl;
+		std::cout << " Last name: " << contacts[i].getLastName() << std::endl;
+		std::cout << " Nickname: " << contacts[i].getNickname() << std::endl;
+		std::cout << " Phone number: " << contacts[i].getPhoneNumber() << std::endl;
+		std::cout << " Darkest secret: " << contacts[i].getDarkestSecret() << std::endl;
+		std::cout << "---------------------------" << std::endl;
+		std::cout << std::endl;
+	}
 }
 
 std::string PhoneBook::formatResult(std::string text)
@@ -80,7 +105,7 @@ std::string PhoneBook::formatResult(std::string text)
 		for (int i = 0; i < max_c - length; i++)
 			result += " ";
 	else
-		 result = text.substr(0, 8) + ".";
+		 result = text.substr(0, 9) + ".";
 	return (result);
 }
 

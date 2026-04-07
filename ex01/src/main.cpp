@@ -31,7 +31,10 @@ void	selectOption(PhoneBook& pb, int option)
 	if (option == 1)
 		pb.addContact();
 	else if (option == 2)
+	{
 		pb.searchContact();
+		pb.displayContact();
+	}
 	else if (option == 3)
 		exit(0);
 }
