@@ -1,0 +1,9 @@
+*.out
+.vscode
+account
+obj*
+TODO
+main
+*linux
+fail*
+*.a
