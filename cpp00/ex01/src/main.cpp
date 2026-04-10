@@ -15,13 +15,17 @@ void    printMenu()
 
 int     getOption()
 {
+	std::string input;
 	int option;
 
 	option = 0;
-	while (option != 1 && option != 2 && option != 3)
+	while (true)
 	{
 		std::cout << "- Option: ";
-		std::cin >> option;
+		std::getline(std::cin, input);
+		std::stringstream ss(input);
+		if (ss >> option && ss.eof() && option >= 1 && option <= 3)
+			return (option);
 	}
 	return (option);
 }

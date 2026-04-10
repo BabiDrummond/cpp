@@ -1,6 +1,6 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : index(0) {}
+PhoneBook::PhoneBook() : index(0), count(0) {}
 
 void PhoneBook::addContact(){
 	std::string firstName = "";
@@ -9,7 +9,8 @@ void PhoneBook::addContact(){
     std::string phoneNumber = "";
     std::string darkestSecret = "";
 
-	std::cin.ignore();
+	if (PhoneBook::index == 8)
+		PhoneBook::index = 0;
 	while (firstName.empty())
 	{
 		std::cout << "- First name: ";
@@ -35,14 +36,16 @@ void PhoneBook::addContact(){
     	std::cout << "- Darkest secret: ";
 		std::getline(std::cin, darkestSecret);
 	}
-	contacts[index] = Contact(
+	contacts[index++] = Contact(
 							firstName,
 							lastName,
 							nickname,
 							phoneNumber,
 							darkestSecret
 						);
-	PhoneBook::index++;
+
+	if (PhoneBook::count < 8)
+		PhoneBook::count++;
 	std::cout << "---------------------------" << std::endl;
 	std::cout << "----- Contact added! ------" << std::endl;
 	std::cout << std::endl;
@@ -52,8 +55,8 @@ void PhoneBook::searchContact(){
 
 	std::cout << "_________________ PHONEBOOK _________________" << std::endl;
 	std::cout << "|          |          |          |          |" << std::endl;
-	std::cout << "|INDEX     |NAME      |LAST NAME |NICKNAME  |" << std::endl;	
-	for (int i = 0; i < index; i++)
+	std::cout << "|INDEX     |NAME      |LAST NAME |NICKNAME  |" << std::endl;
+	for (int i = 0; i < count; i++)
 	{
 		std::cout << "|" << formatResult(toString(i)) << "|";
 		std::cout << formatResult(contacts[i].getFirstName()) << "|";
@@ -65,29 +68,30 @@ void PhoneBook::searchContact(){
 }
 
 void PhoneBook::displayContact(){
+	std::string	input;
 	int i;
 
-	i = -1;
-	if (index > 0)
+	if (count > 0)
 	{
 		std::cout << "- Choose an index: ";
-		std::cin >> i;
-		if (i < 0 || i > index - 1)
+		std::getline(std::cin, input);
+		std::stringstream ss(input);
+		if (ss >> i && ss.eof() && i >= 0 && i <= count - 1)
 		{
 			std::cout << "---------------------------" << std::endl;
-			std::cout << "----- Invalid index! ------" << std::endl;
+			std::cout << "------ CONTACT INFO -------" << std::endl;
+			std::cout << " Index: " << i << std::endl;
+			std::cout << " First name: " << contacts[i].getFirstName() << std::endl;
+			std::cout << " Last name: " << contacts[i].getLastName() << std::endl;
+			std::cout << " Nickname: " << contacts[i].getNickname() << std::endl;
+			std::cout << " Phone number: " << contacts[i].getPhoneNumber() << std::endl;
+			std::cout << " Darkest secret: " << contacts[i].getDarkestSecret() << std::endl;
+			std::cout << "---------------------------" << std::endl;
 			std::cout << std::endl;
 			return ;
 		}
 		std::cout << "---------------------------" << std::endl;
-		std::cout << "------ CONTACT INFO -------" << std::endl;
-		std::cout << " Index: " << i << std::endl;
-		std::cout << " First name: " << contacts[i].getFirstName() << std::endl;
-		std::cout << " Last name: " << contacts[i].getLastName() << std::endl;
-		std::cout << " Nickname: " << contacts[i].getNickname() << std::endl;
-		std::cout << " Phone number: " << contacts[i].getPhoneNumber() << std::endl;
-		std::cout << " Darkest secret: " << contacts[i].getDarkestSecret() << std::endl;
-		std::cout << "---------------------------" << std::endl;
+		std::cout << "----- Invalid index! ------" << std::endl;
 		std::cout << std::endl;
 	}
 }

@@ -8,6 +8,7 @@
 class PhoneBook {
 	private:
 		int			index;
+		int			count;
 		Contact 	contacts[8];
 		std::string formatResult(std::string text);
 		std::string toString(int num);
