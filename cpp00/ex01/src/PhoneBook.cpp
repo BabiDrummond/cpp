@@ -9,8 +9,8 @@ void PhoneBook::addContact(){
     std::string phoneNumber = "";
     std::string darkestSecret = "";
 
-	if (PhoneBook::index == 8)
-		PhoneBook::index = 0;
+	if (index == 8)
+		index = 0;
 	while (firstName.empty())
 	{
 		std::cout << "- First name: ";
@@ -44,8 +44,8 @@ void PhoneBook::addContact(){
 							darkestSecret
 						);
 
-	if (PhoneBook::count < 8)
-		PhoneBook::count++;
+	if (count < 8)
+		count++;
 	std::cout << "---------------------------" << std::endl;
 	std::cout << "----- Contact added! ------" << std::endl;
 	std::cout << std::endl;
