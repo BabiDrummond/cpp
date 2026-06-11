@@ -2,10 +2,8 @@
 
 int	main(void)
 {
-	Zombie *zombie = newZombie("Carrot");
-	zombie->announce();
-	
-	randomChump("Potato");
-	
-	delete(zombie);
+	Zombie *zombie = zombieHorde(5, "Bob");
+	for (int i = 0; i < 5; i++)
+		zombie[i].announce();
+	delete []zombie;
 }
