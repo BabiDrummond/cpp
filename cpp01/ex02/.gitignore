@@ -1,6 +1,6 @@
 *.out
 .vscode
-zombie
+string
 obj*
 TODO
 main

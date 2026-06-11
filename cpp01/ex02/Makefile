@@ -1,4 +1,4 @@
-NAME = zombie
+NAME = string
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
