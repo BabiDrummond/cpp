@@ -1,6 +1,6 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : index(0), count(0) {}
+PhoneBook::PhoneBook() : _index(0), _count(0) {}
 
 void PhoneBook::addContact(){
 	std::string firstName = "";
@@ -9,8 +9,8 @@ void PhoneBook::addContact(){
     std::string phoneNumber = "";
     std::string darkestSecret = "";
 
-	if (index == 8)
-		index = 0;
+	if (_index == 8)
+		_index = 0;
 	while (firstName.empty())
 	{
 		std::cout << "- First name: ";
@@ -36,7 +36,7 @@ void PhoneBook::addContact(){
     	std::cout << "- Darkest secret: ";
 		std::getline(std::cin, darkestSecret);
 	}
-	contacts[index++] = Contact(
+	_contacts[_index++] = Contact(
 							firstName,
 							lastName,
 							nickname,
@@ -44,8 +44,8 @@ void PhoneBook::addContact(){
 							darkestSecret
 						);
 
-	if (count < 8)
-		count++;
+	if (_count < 8)
+		_count++;
 	std::cout << "---------------------------" << std::endl;
 	std::cout << "----- Contact added! ------" << std::endl;
 	std::cout << std::endl;
@@ -56,12 +56,12 @@ void PhoneBook::searchContact(){
 	std::cout << "_________________ PHONEBOOK _________________" << std::endl;
 	std::cout << "|          |          |          |          |" << std::endl;
 	std::cout << "|INDEX     |NAME      |LAST NAME |NICKNAME  |" << std::endl;
-	for (int i = 0; i < count; i++)
+	for (int i = 0; i < _count; i++)
 	{
 		std::cout << "|" << formatResult(toString(i)) << "|";
-		std::cout << formatResult(contacts[i].getFirstName()) << "|";
-		std::cout << formatResult(contacts[i].getLastName()) << "|";
-		std::cout << formatResult(contacts[i].getNickname()) << "|" << std::endl;
+		std::cout << formatResult(_contacts[i].getFirstName()) << "|";
+		std::cout << formatResult(_contacts[i].getLastName()) << "|";
+		std::cout << formatResult(_contacts[i].getNickname()) << "|" << std::endl;
 	}
 	std::cout << "|__________|__________|__________|__________|" << std::endl;
 	std::cout << std::endl;
@@ -71,21 +71,21 @@ void PhoneBook::displayContact(){
 	std::string	input;
 	int i;
 
-	if (count > 0)
+	if (_count > 0)
 	{
 		std::cout << "- Choose an index: ";
 		std::getline(std::cin, input);
 		std::stringstream ss(input);
-		if (ss >> i && ss.eof() && i >= 0 && i <= count - 1)
+		if (ss >> i && ss.eof() && i >= 0 && i <= _count - 1)
 		{
 			std::cout << "---------------------------" << std::endl;
 			std::cout << "------ CONTACT INFO -------" << std::endl;
 			std::cout << " Index: " << i << std::endl;
-			std::cout << " First name: " << contacts[i].getFirstName() << std::endl;
-			std::cout << " Last name: " << contacts[i].getLastName() << std::endl;
-			std::cout << " Nickname: " << contacts[i].getNickname() << std::endl;
-			std::cout << " Phone number: " << contacts[i].getPhoneNumber() << std::endl;
-			std::cout << " Darkest secret: " << contacts[i].getDarkestSecret() << std::endl;
+			std::cout << " First name: " << _contacts[i].getFirstName() << std::endl;
+			std::cout << " Last name: " << _contacts[i].getLastName() << std::endl;
+			std::cout << " Nickname: " << _contacts[i].getNickname() << std::endl;
+			std::cout << " Phone number: " << _contacts[i].getPhoneNumber() << std::endl;
+			std::cout << " Darkest secret: " << _contacts[i].getDarkestSecret() << std::endl;
 			std::cout << "---------------------------" << std::endl;
 			std::cout << std::endl;
 			return ;

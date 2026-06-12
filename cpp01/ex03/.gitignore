@@ -1,0 +1,9 @@
+*.out
+.vscode
+war
+obj*
+TODO
+main
+*linux
+fail*
+*.a
