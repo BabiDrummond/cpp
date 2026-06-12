@@ -2,7 +2,7 @@
 
 PhoneBook::PhoneBook() : _index(0), _count(0) {}
 
-void PhoneBook::addContact(){
+void PhoneBook::addContact() {
 	std::string firstName = "";
     std::string lastName = "";
 	std::string nickname = "";
@@ -51,7 +51,7 @@ void PhoneBook::addContact(){
 	std::cout << std::endl;
 }
 
-void PhoneBook::searchContact(){
+void PhoneBook::searchContact() {
 
 	std::cout << "_________________ PHONEBOOK _________________" << std::endl;
 	std::cout << "|          |          |          |          |" << std::endl;
@@ -67,7 +67,7 @@ void PhoneBook::searchContact(){
 	std::cout << std::endl;
 }
 
-void PhoneBook::displayContact(){
+void PhoneBook::displayContact() {
 	std::string	input;
 	int i;
 
@@ -96,8 +96,7 @@ void PhoneBook::displayContact(){
 	}
 }
 
-std::string PhoneBook::formatResult(std::string text)
-{
+std::string PhoneBook::formatResult(std::string text) {
 	std::string result;
 	int length;
 	int	max_c;
@@ -113,8 +112,7 @@ std::string PhoneBook::formatResult(std::string text)
 	return (result);
 }
 
-std::string PhoneBook::toString(int num)
-{
+std::string PhoneBook::toString(int num) {
 	std::stringstream ss;
 	ss << num;
 	return (ss.str());

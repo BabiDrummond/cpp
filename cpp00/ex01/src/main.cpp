@@ -2,8 +2,7 @@
 #include <cstdlib>
 #include "PhoneBook.hpp"
 
-void    printMenu()
-{
+void    printMenu() {
 	std::cout << "---------------------------" << std::endl;
 	std::cout << "-------- PHONEBOOK --------" << std::endl;
 	std::cout << "- Choose an option: -------" << std::endl;
@@ -13,8 +12,7 @@ void    printMenu()
 	std::cout << "---------------------------" << std::endl;
 }
 
-int     getOption()
-{
+int     getOption() {
 	std::string input;
 	int option;
 
@@ -30,8 +28,7 @@ int     getOption()
 	return (option);
 }
 
-void	selectOption(PhoneBook& pb, int option)
-{
+void	selectOption(PhoneBook& pb, int option) {
 	if (option == 1)
 		pb.addContact();
 	else if (option == 2)
@@ -43,8 +40,7 @@ void	selectOption(PhoneBook& pb, int option)
 		exit(0);
 }
 
-int main(void)
-{
+int main(void) {
 	PhoneBook	pb;
 	int			option;
 
