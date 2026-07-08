@@ -1,7 +1,6 @@
 NAME = sed
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-INCLUDE = -I./include/
 
 SRCS_DIR = src/
 SRCS = main.cpp
@@ -15,7 +14,7 @@ $(NAME): $(OBJS)
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
 	@mkdir -p $(dir $@)
-	@$(CPP) $(CPPFLAGS) $(INCLUDE) -c $< -o $@
+	@$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS_DIR)
