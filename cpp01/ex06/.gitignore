@@ -1,6 +1,6 @@
 *.out
 .vscode
-harl
+harlFilter
 obj*
 TODO
 main

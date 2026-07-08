@@ -1,12 +1,13 @@
 #include "Harl.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
+	if (argc != 2) {
+		std::cout << "Please provide a filter for harl. Example: ./harlFilter \"WARNING\"" << std::endl;
+		return (1);
+	}
 	Harl harl;
 
-	harl.complain("debug");
-	harl.complain("info");
-	harl.complain("warning");
-	harl.complain("error");
+	harl.complain(argv[1]);
 	return (0);
 }
