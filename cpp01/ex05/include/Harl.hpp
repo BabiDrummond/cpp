@@ -1,5 +1,5 @@
-#ifndef HUMANA_HPP
-#define HUMANA_HPP
+#ifndef HARL_HPP
+#define HARL_HPP
 
 #include <string>
 #include <iostream>
