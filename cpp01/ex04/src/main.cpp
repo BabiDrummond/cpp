@@ -3,7 +3,7 @@
 #include <sstream>
 #include <fstream>
 
-bool dumpFile(const std::string& fileName, std::string& content)
+bool dumpFile(const std::string& fileName, std::string& fileContent)
 {
 	std::ifstream filein(fileName.c_str());
 	if (!filein.is_open())
@@ -11,27 +11,25 @@ bool dumpFile(const std::string& fileName, std::string& content)
 
 	std::stringstream buffer;
 	buffer << filein.rdbuf();
-	content = buffer.str();
+	fileContent = buffer.str();
 	filein.close();
 
 	return (true);
 }
 
-void replaceStr(std::string fileName, std::string content, std::string s1, std::string s2)
+void replaceStr(std::string fileName, std::string fileContent, std::string s1, std::string s2)
 {
 	const std::string outputFile = fileName.append(".replace");
 	std::ofstream fileout(outputFile.c_str());
 
-	std::size_t start = 0;
-	std::size_t end;
+	std::size_t pos = 0;
 
-	while ((end = content.find(s1, start)) != std::string::npos) {
-		fileout.write(content.c_str() + start, end - start);
-		fileout << s2;
-		start = end + s1.length();
+	while ((pos = fileContent.find(s1, pos)) != std::string::npos) {
+		fileContent.erase(pos, s1.length());
+		fileContent.insert(pos, s2);
+		pos += s2.length();
 	}
-	end = content.length();
-	fileout.write(content.c_str() + start, end - start);
+	fileout << fileContent;
 	fileout.close();
 }
 
