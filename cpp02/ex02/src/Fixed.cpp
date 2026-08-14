@@ -49,6 +49,87 @@ float Fixed::toFloat ( void ) const {
 	return ((float) _value / (1 << _fracBits));
 }
 
+bool	Fixed::operator<( const Fixed& other ) {
+	return (this->_value < other._value);
+}
+
+bool	Fixed::operator>( const Fixed& other ) {
+	return (this->_value > other._value);
+}
+
+bool	Fixed::operator<=( const Fixed& other ) {
+	return (this->_value <= other._value);
+}
+
+bool	Fixed::operator>=( const Fixed& other ) {
+	return (this->_value >= other._value);
+}
+
+bool	Fixed::operator==( const Fixed& other ) {
+	return (this->_value == other._value);
+}
+
+bool	Fixed::operator!=( const Fixed& other ) {
+	return (this->_value != other._value);
+}
+
+Fixed&	Fixed::operator+ ( const Fixed& other ) {
+	Fixed newFixed (this->_value + other._value);
+	return (newFixed);
+}
+
+Fixed&	Fixed::operator- ( const Fixed& other ) {
+	Fixed newFixed (this->_value - other._value);
+	return (newFixed);
+}
+
+Fixed&	Fixed::operator* ( const Fixed& other ) {
+
+}
+
+Fixed&	Fixed::operator/ ( const Fixed& other ) {
+
+}
+
+
+Fixed&	Fixed::operator++ ( void ) {
+	this->_value = this->_value + 1;
+	return (*this);
+}
+
+Fixed&	Fixed::operator-- ( void ) {
+	this->_value = this->_value - 1;
+	return (*this);
+}
+
+Fixed&	Fixed::operator++ ( int ) {
+	Fixed& old = *this;
+	operator++();
+	return (old);
+}
+
+Fixed&	Fixed::operator-- ( int ) {
+	Fixed& old = *this;
+	operator--();
+	return (old);
+}
+
+static	Fixed& min( Fixed& a,  Fixed& b ){
+
+}
+
+static 	Fixed& max( Fixed& a,  Fixed& b ){
+
+}
+
+static 	Fixed& min( const Fixed& a,  const Fixed& b ){
+
+}
+
+static 	Fixed& max( const Fixed& a,  const Fixed& b ){
+
+}
+
 std::ostream& operator<< ( std::ostream& out, const Fixed& fixed ) {
 	return (out << fixed.toFloat());
 }
