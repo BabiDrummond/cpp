@@ -11,12 +11,16 @@ class Fixed {
 
 	public:
 		Fixed ();
+		Fixed ( const int number );
 		Fixed ( const Fixed &other );
 		Fixed &operator= ( const Fixed &other );
 		~Fixed ();
 
 		int		getRawBits ( void ) const;
 		void	setRawBits ( int const raw );
+
+		int		toInt ( void ) const;
+		float	toFloat ( void ) const;
 };
 
 #endif

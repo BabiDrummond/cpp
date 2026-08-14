@@ -5,6 +5,10 @@ _rawBits(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
+Fixed::Fixed ( const int number ) {
+
+}
+
 Fixed::Fixed (const Fixed& other):
 _rawBits(other._rawBits) {
 	std::cout << "Copy constructor called" << std::endl;
@@ -29,4 +33,12 @@ int Fixed::getRawBits ( void ) const {
 void Fixed::setRawBits ( int const raw ) {
 	std::cout << "setRawBits member function called" << std::endl;
 	this->_rawBits = raw;
+}
+
+int Fixed::toInt ( void ) const {
+
+}
+
+float	Fixed::toFloat ( void ) const {
+
 }
