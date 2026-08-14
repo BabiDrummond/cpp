@@ -6,7 +6,11 @@ _rawBits(0) {
 }
 
 Fixed::Fixed ( const int number ) {
+	_rawBits = number << _fracBits;
+}
 
+Fixed::Fixed ( const float number ) {
+	_rawBits = (int)(roundf(number * (1 << _fracBits)));
 }
 
 Fixed::Fixed (const Fixed& other):
@@ -36,9 +40,9 @@ void Fixed::setRawBits ( int const raw ) {
 }
 
 int Fixed::toInt ( void ) const {
-
+	return (_rawBits >> _fracBits);
 }
 
 float	Fixed::toFloat ( void ) const {
-
+	return (_rawBits >> _fracBits);
 }
