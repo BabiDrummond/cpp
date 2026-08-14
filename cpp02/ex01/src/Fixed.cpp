@@ -1,27 +1,27 @@
 #include "Fixed.hpp"
 
 Fixed::Fixed ():
-_rawBits(0) {
+_value(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed ( const int number ) {
-	_rawBits = number << _fracBits;
+Fixed::Fixed ( const int raw ) {
+	_value = raw << _fracBits;
 }
 
-Fixed::Fixed ( const float number ) {
-	_rawBits = (int)(roundf(number * (1 << _fracBits)));
+Fixed::Fixed ( const float raw ) {
+	_value = roundf(raw * (1 << _fracBits));
 }
 
 Fixed::Fixed (const Fixed& other):
-_rawBits(other._rawBits) {
+_value(other._value) {
 	std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed& Fixed::operator= (const Fixed& other) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
-		this->_rawBits = other._rawBits;
+		this->_value = other._value;
 	return (*this);
 }
 
@@ -31,18 +31,18 @@ Fixed::~Fixed () {
 
 int Fixed::getRawBits ( void ) const {
 	std::cout << "getRawBits member function called" << std::endl;
-	return (this->_rawBits);
+	return (this->_value);
 }
 
 void Fixed::setRawBits ( int const raw ) {
 	std::cout << "setRawBits member function called" << std::endl;
-	this->_rawBits = raw;
+	this->_value = raw;
 }
 
 int Fixed::toInt ( void ) const {
-	return (_rawBits >> _fracBits);
+	return (_value >> _fracBits);
 }
 
 float	Fixed::toFloat ( void ) const {
-	return (_rawBits >> _fracBits);
+	return (_value >> _fracBits);
 }
