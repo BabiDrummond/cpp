@@ -37,6 +37,11 @@ void	ClapTrap::attack(const std::string& target) {
 		std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << std::endl;
 		std::cout << "Current energy points: " << _energyPoints << std::endl;
 		std::cout << std::endl;
+	} else {
+		std::cout << "ClapTrap " << _name << " doesn't have enough energy or hit points to attack!" << std::endl;
+		std::cout << "Current energy points: " << _energyPoints << std::endl;
+		std::cout << "Current hit points: " << _hitPoints << std::endl;
+		std::cout << std::endl;
 	}
 }
 
@@ -46,16 +51,25 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 		std::cout << "ClapTrap " << _name << " takes " << amount << " points of damage!" << std::endl;
 		std::cout << "Current hit points: " << _hitPoints << std::endl;
 		std::cout << std::endl;
+	} else {
+		std::cout << "ClapTrap " << _name << " is already dead!" << std::endl;
+		std::cout << "Current hit points: " << _hitPoints << std::endl;
+		std::cout << std::endl;
 	}
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
-	if (_energyPoints) {
+	if (_energyPoints && _hitPoints) {
 		_hitPoints += amount;
 		_energyPoints--;
 		std::cout << "ClapTrap " << _name << " repairs " << amount << " hit points!" << std::endl;
 		std::cout << "Current hit points: " << _hitPoints << std::endl;
 		std::cout << "Current energy points: " << _energyPoints << std::endl;
+		std::cout << std::endl;
+	} else {
+		std::cout << "ClapTrap " << _name << " doesn't have enough energy or hit points to repair itself!" << std::endl;
+		std::cout << "Current energy points: " << _energyPoints << std::endl;
+		std::cout << "Current hit points: " << _hitPoints << std::endl;
 		std::cout << std::endl;
 	}
 }
