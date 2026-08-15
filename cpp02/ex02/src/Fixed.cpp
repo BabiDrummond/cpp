@@ -49,85 +49,97 @@ float Fixed::toFloat ( void ) const {
 	return ((float) _value / (1 << _fracBits));
 }
 
-bool	Fixed::operator<( const Fixed& other ) {
+bool	Fixed::operator<( const Fixed& other ) const {
 	return (this->_value < other._value);
 }
 
-bool	Fixed::operator>( const Fixed& other ) {
+bool	Fixed::operator>( const Fixed& other ) const {
 	return (this->_value > other._value);
 }
 
-bool	Fixed::operator<=( const Fixed& other ) {
+bool	Fixed::operator<=( const Fixed& other ) const {
 	return (this->_value <= other._value);
 }
 
-bool	Fixed::operator>=( const Fixed& other ) {
+bool	Fixed::operator>=( const Fixed& other ) const {
 	return (this->_value >= other._value);
 }
 
-bool	Fixed::operator==( const Fixed& other ) {
+bool	Fixed::operator==( const Fixed& other ) const {
 	return (this->_value == other._value);
 }
 
-bool	Fixed::operator!=( const Fixed& other ) {
+bool	Fixed::operator!=( const Fixed& other ) const {
 	return (this->_value != other._value);
 }
 
-Fixed&	Fixed::operator+ ( const Fixed& other ) {
-	Fixed newFixed (this->_value + other._value);
+Fixed	Fixed::operator+ ( const Fixed& other ) const {
+	Fixed newFixed;
+
+	newFixed._value = this->_value + other._value;
 	return (newFixed);
 }
 
-Fixed&	Fixed::operator- ( const Fixed& other ) {
-	Fixed newFixed (this->_value - other._value);
+Fixed	Fixed::operator- ( const Fixed& other ) const {
+	Fixed newFixed;
+
+	newFixed._value = this->_value - other._value;
 	return (newFixed);
 }
 
-Fixed&	Fixed::operator* ( const Fixed& other ) {
-
+Fixed	Fixed::operator* ( const Fixed& other ) const {
+	Fixed newFixed;
+	
+	newFixed._value = (this->_value * other._value) >> _fracBits;
+	return (newFixed);
 }
 
-Fixed&	Fixed::operator/ ( const Fixed& other ) {
+Fixed	Fixed::operator/ ( const Fixed& other ) const {
+	if (other._value == 0)
+		throw std::runtime_error("Error: division by 0!\n");
 
+	Fixed newFixed;
+
+	newFixed._value = (this->_value << _fracBits) / other._value;
+	return (newFixed);
 }
-
 
 Fixed&	Fixed::operator++ ( void ) {
-	this->_value = this->_value + 1;
+	this->_value++;
 	return (*this);
 }
 
 Fixed&	Fixed::operator-- ( void ) {
-	this->_value = this->_value - 1;
+	this->_value--;
 	return (*this);
 }
 
-Fixed&	Fixed::operator++ ( int ) {
-	Fixed& old = *this;
+Fixed	Fixed::operator++ ( int ) {
+	Fixed old = *this;
 	operator++();
 	return (old);
 }
 
-Fixed&	Fixed::operator-- ( int ) {
-	Fixed& old = *this;
+Fixed	Fixed::operator-- ( int ) {
+	Fixed old = *this;
 	operator--();
 	return (old);
 }
 
-static	Fixed& min( Fixed& a,  Fixed& b ){
-
+static	Fixed& min( Fixed& a,  Fixed& b ) {
+	return (a < b ? a : b);
 }
 
-static 	Fixed& max( Fixed& a,  Fixed& b ){
-
+static 	Fixed& max( Fixed& a,  Fixed& b ) {
+	return (a > b ? a : b);
 }
 
-static 	Fixed& min( const Fixed& a,  const Fixed& b ){
-
+static 	const Fixed& min( const Fixed& a,  const Fixed& b ) {
+	return (a < b ? a : b);
 }
 
-static 	Fixed& max( const Fixed& a,  const Fixed& b ){
-
+static 	const Fixed& max( const Fixed& a,  const Fixed& b ) {
+	return (a > b ? a : b);
 }
 
 std::ostream& operator<< ( std::ostream& out, const Fixed& fixed ) {
