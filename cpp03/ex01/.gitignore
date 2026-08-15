@@ -1,0 +1,9 @@
+*.out
+.vscode
+scavtrap
+obj*
+TODO
+main
+*linux
+fail*
+*.a

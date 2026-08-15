@@ -2,9 +2,9 @@
 
 ClapTrap::ClapTrap ( std::string name ):
 _name(name),
-_hitPoints(10),
-_energyPoints (10),
-_attackDamage (0) {
+_hitPoints(100),
+_energyPoints (50),
+_attackDamage (20) {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
