@@ -2,15 +2,17 @@
 #define CLAPTRAP_HPP
 
 #include <string>
+#include <iostream>
 
 class ClapTrap {
 	private:
-		int	hitPoints;
-		int	energyPoints;
-		int	attackDamage;
+		std::string	_name;
+		int			_hitPoints;
+		int			_energyPoints;
+		int			_attackDamage;
 
 	public:
-		ClapTrap ();
+		ClapTrap ( std::string name = "default" );
 		ClapTrap ( const ClapTrap &other );
 		ClapTrap &operator= ( const ClapTrap &other );
 		~ClapTrap ();
