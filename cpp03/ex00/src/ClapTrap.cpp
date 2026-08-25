@@ -32,9 +32,9 @@ ClapTrap::~ClapTrap () {
 }
 
 void	ClapTrap::attack(const std::string& target) {
-	if (_hitPoints < 1) {
+	if (_hitPoints <= 0) {
 		this->printMsg(_name + " is dead and can't attack!");
-	} else if (_energyPoints < 1) {
+	} else if (_energyPoints <= 0) {
 		this->printMsg(_name + " doesn't have enough energy to attack!");
 	} else {
 		_energyPoints--;
@@ -44,19 +44,19 @@ void	ClapTrap::attack(const std::string& target) {
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
-	if (_hitPoints) {
+	if (_hitPoints <= 0) {
+		this->printMsg(_name + " is already dead!");
+	} else {
 		_hitPoints -= amount;
 		this->printMsg(_name + " takes " + itoSTR(amount) + " points of damage!");
 		this->printMsg(_name + " current hit points: " + itoSTR(_hitPoints));
-	} else {
-		this->printMsg(_name + " is already dead!");
 	}
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
-	if (_hitPoints < 1) {
+	if (_hitPoints <= 0) {
 		this->printMsg(_name + " is already dead and can't be repaired!");
-	} else if (_energyPoints < 1) {
+	} else if (_energyPoints <= 0) {
 		this->printMsg(_name + " doesn't have enough energy to repair itself!");
 	} else {
 		_hitPoints += amount;

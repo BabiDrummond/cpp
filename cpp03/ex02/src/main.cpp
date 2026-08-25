@@ -11,8 +11,12 @@ int main( void ) {
 		
 		frag.attack("Bob");
 		frag.attack("Bob");
+		frag.takeDamage(10);
+		frag.takeDamage(50);
+		frag.beRepaired(10);
+		frag.takeDamage(50);
+		frag.beRepaired(10);
 		frag.highFivesGuys();
 	}
-
 	return 0;
 }

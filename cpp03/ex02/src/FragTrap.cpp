@@ -1,18 +1,18 @@
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap ( std::string name ): ClapTrap(name) {
-	std::cout << "FragTrap constructor says: Hello hello hello!" << std::endl;
+	this->printMsg(_name + " constructor says: Hello hello hello!");
 	this->_hitPoints = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
 }
 
 FragTrap::FragTrap (const FragTrap& other): ClapTrap(other) {
-	std::cout << "FragTrap copy constructor called" << std::endl;
+	this->printMsg(_name + " copy constructor called");
 }
 
 FragTrap& FragTrap::operator= (const FragTrap& other) {
-	std::cout << "FragTrap copy assignment operator called" << std::endl;
+	this->printMsg(_name + " copy assignment operator called");
 	if (this != &other) {
 		ClapTrap::operator=(other);
 	}
@@ -20,9 +20,13 @@ FragTrap& FragTrap::operator= (const FragTrap& other) {
 }
 
 FragTrap::~FragTrap () {
-	std::cout << "FragTrap destructor called" << std::endl;
+	this->printMsg(_name + " destructor called");
 }
 
 void FragTrap::highFivesGuys( void ) {
-	std::cout << "FragTrap high fives you guys!" << std::endl;
+	this->printMsg(_name + " high fives you guys!");
+}
+
+void FragTrap::printMsg(const std::string& msg) {
+	std::cout << "[FragTrap]: " << msg << std::endl;
 }

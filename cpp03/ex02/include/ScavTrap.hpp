@@ -6,6 +6,8 @@
 #include <iostream>
 
 class ScavTrap: public ClapTrap {
+	private:
+		bool	_guardMode;
 	public:
 		ScavTrap ( std::string name = "ScavTrap" );
 		ScavTrap ( const ScavTrap& other );
@@ -14,6 +16,7 @@ class ScavTrap: public ClapTrap {
 
 		void	attack(const std::string& target);
 		void	guardGate();
+		void	printMsg(const std::string& msg);
 };
 
 #endif

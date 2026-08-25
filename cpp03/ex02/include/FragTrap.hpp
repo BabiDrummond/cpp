@@ -13,7 +13,7 @@ class FragTrap: public ClapTrap {
 		~FragTrap ();
 
 		void	highFivesGuys( void );
-
+		void	printMsg(const std::string& msg);
 };
 
 #endif
