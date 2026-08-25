@@ -1,6 +1,6 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap ( std::string name ) : ClapTrap(name) {
+FragTrap::FragTrap ( std::string name ): ClapTrap(name) {
 	std::cout << "FragTrap constructor says: Hello hello hello!" << std::endl;
 }
 
