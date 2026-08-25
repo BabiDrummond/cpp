@@ -2,6 +2,9 @@
 
 FragTrap::FragTrap ( std::string name ): ClapTrap(name) {
 	std::cout << "FragTrap constructor says: Hello hello hello!" << std::endl;
+	this->_hitPoints = 100;
+	this->_energyPoints = 100;
+	this->_attackDamage = 30;
 }
 
 FragTrap::FragTrap (const FragTrap& other): ClapTrap(other) {
