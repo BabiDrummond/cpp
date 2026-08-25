@@ -3,13 +3,12 @@
 
 int main( void ) {
 	{
-		ClapTrap clap("Bob");
 		ScavTrap scav("Joe");
+		ScavTrap scav2(scav);
+		ScavTrap scav3("Jonas");
 
-		clap.attack("Joe");
-		clap.attack("Joe");
-		clap.takeDamage(5);
-		clap.beRepaired(5);
+		scav = scav3;
+		
 		scav.attack("Bob");
 		scav.attack("Bob");
 		scav.guardGate();
