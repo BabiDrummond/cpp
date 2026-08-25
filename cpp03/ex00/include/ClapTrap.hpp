@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 
 class ClapTrap {
 	private:
@@ -20,6 +21,9 @@ class ClapTrap {
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
+		void	printMsg(const std::string& msg);
 };
+
+std::string	itoSTR(const int nbr);
 
 #endif
