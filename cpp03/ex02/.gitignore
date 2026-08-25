@@ -1,0 +1,9 @@
+*.out
+.vscode
+fragtrap
+obj*
+TODO
+main
+*linux
+fail*
+*.a
