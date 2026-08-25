@@ -11,6 +11,9 @@ int main( void ) {
 		
 		scav.attack("Bob");
 		scav.attack("Bob");
+		scav.takeDamage(10);
+		scav.beRepaired(10);
+		scav.guardGate();
 		scav.guardGate();
 	}
 
