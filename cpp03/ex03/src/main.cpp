@@ -1,22 +1,20 @@
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
+
 
 int main( void ) {
 	{
-		FragTrap frag("Joe");
-		FragTrap frag2(frag);
-		FragTrap frag3("Jonas");
+		DiamondTrap diamond("Joe");
+		DiamondTrap diamond2(diamond);
+		DiamondTrap diamond3("Jonas");
 
-		frag = frag3;
+		diamond = diamond3;
 		
-		frag.attack("Bob");
-		frag.attack("Bob");
-		frag.takeDamage(10);
-		frag.takeDamage(50);
-		frag.beRepaired(10);
-		frag.takeDamage(50);
-		frag.beRepaired(10);
-		frag.highFivesGuys();
+		diamond.ScavTrap::attack("Bob");
+		diamond.ScavTrap::attack("Bob");
+		diamond.whoAmI();
 	}
 	return 0;
 }

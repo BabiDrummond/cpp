@@ -6,17 +6,16 @@
 #include <string>
 #include <iostream>
 
-class DiamondTrap: public FragTrap, ScavTrap {
+class DiamondTrap: public ScavTrap, public FragTrap {
 	private:
-		bool	_guardMode;
+		std::string	_name;
 	public:
 		DiamondTrap ( std::string name = "DiamondTrap" );
 		DiamondTrap ( const DiamondTrap& other );
 		DiamondTrap &operator= ( const DiamondTrap& other );
 		~DiamondTrap ();
 
-		void	attack(const std::string& target);
-		void	guardGate();
+		void	whoAmI();
 		void	printMsg(const std::string& msg);
 };
 
