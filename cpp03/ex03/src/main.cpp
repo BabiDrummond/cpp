@@ -12,8 +12,8 @@ int main( void ) {
 
 		diamond = diamond3;
 		
-		diamond.ScavTrap::attack("Bob");
-		diamond.ScavTrap::attack("Bob");
+		diamond.attack("Bob");
+		diamond.attack("Bob");
 		diamond.whoAmI();
 	}
 	return 0;

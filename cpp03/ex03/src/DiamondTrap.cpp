@@ -34,6 +34,10 @@ DiamondTrap::~DiamondTrap () {
 	this->printMsg(_name + " destructor called");
 }
 
+void DiamondTrap::attack(const std::string& target) {
+	ScavTrap::attack(target);
+}
+
 void DiamondTrap::whoAmI( void ) {
 	this->printMsg("I am " + DiamondTrap::_name + " and " + ClapTrap::_name);
 }
