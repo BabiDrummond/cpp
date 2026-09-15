@@ -5,6 +5,8 @@ INCLUDE = -I./include/
 
 SRCS_DIR = src/
 SRCS = Animal.cpp		\
+		Cat.cpp			\
+		Dog.cpp			\
 		main.cpp
 OBJS_DIR = objs/
 OBJS = $(SRCS:%.cpp=$(OBJS_DIR)%.o)

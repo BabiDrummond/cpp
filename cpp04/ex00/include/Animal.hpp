@@ -14,8 +14,12 @@ class Animal {
 		Animal &operator= ( const Animal &other );
 		~Animal ();
 
-		void	makeSound( void );
-		void	printMsg(const std::string& msg);
+		void	makeSound( void ) const;
+
+		void setType( std::string type );
+        std::string getType ( void ) const;
+		
+		void	printMsg(const std::string& msg) const;
 };
 
 #endif

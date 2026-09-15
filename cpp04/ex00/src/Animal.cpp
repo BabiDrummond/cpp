@@ -2,30 +2,38 @@
 
 Animal::Animal ():
 type("Animal") {
-	this->printMsg("Default constructor called");
+	this->printMsg("Generic default constructor called");
 }
 
 Animal::Animal (const Animal& other): 
 type(other.type) {
-	this->printMsg("Copy constructor called");
+	this->printMsg("Generic copy constructor called");
 }
 
 Animal& Animal::operator= (const Animal& other) {
-	this->printMsg("Copy assignment operator called");
+	this->printMsg("Generic copy assignment operator called");
 	if (this != &other) {
-		this->type = other.type;
+		setType(other.type);
 	}
 	return (*this);
 }
 
 Animal::~Animal () {
-	this->printMsg("Destructor called");
+	this->printMsg("Generic destructor called");
 }
 
-void	Animal::makeSound( void ) {
-	this->printMsg("I'm just an animal.");
+void	Animal::makeSound( void ) const {
+	printMsg("Generic sound");
 }
 
-void	Animal::printMsg(const std::string& msg) {
+void	Animal::setType(std::string type) {
+	this->type = type;
+}
+
+std::string Animal::getType ( void ) const {
+	return (this->type);
+}
+
+void	Animal::printMsg(const std::string& msg) const {
 	std::cout << "[Animal]: " << msg << std::endl;
 }
