@@ -5,18 +5,18 @@
 #include "Animal.hpp"
 
 class Cat: public Animal {
-    public:
-        Cat ();
-        Cat ( const Cat &other );
-        Cat &operator= ( const Cat &other );
-        ~Cat ();
+	public:
+		Cat ();
+		Cat ( const Cat &other );
+		Cat &operator= ( const Cat &other );
+		~Cat ();
 
-        void	makeSound( void ) const;
+		void		makeSound( void ) const;
 
-        void setType( std::string type );
-        std::string getType ( void ) const;
+		void		setType( std::string type );
+		std::string	getType ( void ) const;
 
-        void	printMsg(const std::string& msg) const;
+		void		printMsg(const std::string& msg) const;
 };
 
 #endif
