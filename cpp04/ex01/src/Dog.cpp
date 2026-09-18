@@ -1,13 +1,13 @@
 #include "Dog.hpp"
 
-Dog::Dog(): Animal() {
-    this->setType("Dog");
+Dog::Dog(): Animal(), _brain(new Brain()) {
     this->printMsg("Constructor Au Au called!");
+    this->setType("Dog");
 }
 
 Dog::Dog (const Dog& other): Animal() {
-    this->type = other.type;
 	this->printMsg("Copy constructor Au Au called");
+    this->type = other.type;
 }
 
 Dog& Dog::operator= (const Dog& other) {

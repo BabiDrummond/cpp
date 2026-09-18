@@ -1,13 +1,13 @@
 #include "WrongCat.hpp"
 
 WrongCat::WrongCat(): WrongAnimal() {
-    this->setType("WrongCat");
     this->printMsg("Constructor miau miau called!");
+    this->setType("WrongCat");
 }
 
 WrongCat::WrongCat (const WrongCat& other): WrongAnimal() {
-    setType(other.type);
 	this->printMsg("Copy constructor miau miau called");
+    setType(other.type);
 }
 
 WrongCat& WrongCat::operator= (const WrongCat& other) {

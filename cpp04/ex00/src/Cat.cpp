@@ -1,13 +1,13 @@
 #include "Cat.hpp"
 
 Cat::Cat(): Animal() {
-    this->setType("Cat");
     this->printMsg("Constructor miau miau called!");
+    this->setType("Cat");
 }
 
 Cat::Cat (const Cat& other): Animal() {
-    setType(other.type);
 	this->printMsg("Copy constructor miau miau called");
+    setType(other.type);
 }
 
 Cat& Cat::operator= (const Cat& other) {
