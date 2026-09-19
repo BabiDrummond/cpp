@@ -2,18 +2,18 @@
 
 WrongCat::WrongCat(): WrongAnimal() {
     this->printMsg("Constructor miau miau called!");
-    this->setType("WrongCat");
+    setType("WrongCat");
 }
 
 WrongCat::WrongCat (const WrongCat& other): WrongAnimal() {
 	this->printMsg("Copy constructor miau miau called");
-    setType(other.type);
+    setType(other._type);
 }
 
 WrongCat& WrongCat::operator= (const WrongCat& other) {
 	this->printMsg("Copy assignment operator miau miau called");
 	if (this != &other) {
-		setType(other.type);
+		setType(other._type);
 	}
 	return (*this);
 }
@@ -27,11 +27,11 @@ void	WrongCat::makeSound( void ) const {
 }
 
 void	WrongCat::setType(std::string type) {
-	this->type = type;
+	this->_type = type;
 }
 
 std::string WrongCat::getType ( void ) const {
-	return (this->type);
+	return (this->_type);
 }
 
 void	WrongCat::printMsg(const std::string& msg) const {

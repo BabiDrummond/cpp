@@ -2,18 +2,20 @@
 
 Cat::Cat(): Animal(), _brain(new Brain()) {
     this->printMsg("Constructor miau miau called!");
-    this->setType("Cat");
+    setType("Cat");
 }
 
 Cat::Cat (const Cat& other): Animal() {
 	this->printMsg("Copy constructor miau miau called");
-    setType(other.type);
+    setType(other._type);
+	this->_brain = other._brain;
 }
 
 Cat& Cat::operator= (const Cat& other) {
 	this->printMsg("Copy assignment operator miau miau called");
 	if (this != &other) {
-		setType(other.type);
+		setType(other._type);
+		this->_brain = other._brain;
 	}
 	return (*this);
 }
@@ -27,11 +29,11 @@ void	Cat::makeSound( void ) const {
 }
 
 void	Cat::setType(std::string type) {
-	this->type = type;
+	this->_type = type;
 }
 
 std::string Cat::getType ( void ) const {
-	return (this->type);
+	return (this->_type);
 }
 
 void	Cat::printMsg(const std::string& msg) const {

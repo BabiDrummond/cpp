@@ -1,19 +1,19 @@
 #include "WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal ():
-type("WrongAnimal") {
+_type("WrongAnimal") {
 	this->printMsg("Generic default constructor called");
 }
 
 WrongAnimal::WrongAnimal (const WrongAnimal& other): 
-type(other.type) {
+_type(other._type) {
 	this->printMsg("Generic copy constructor called");
 }
 
 WrongAnimal& WrongAnimal::operator= (const WrongAnimal& other) {
 	this->printMsg("Generic copy assignment operator called");
 	if (this != &other) {
-		setType(other.type);
+		setType(other._type);
 	}
 	return (*this);
 }
@@ -27,11 +27,11 @@ void	WrongAnimal::makeSound( void ) const {
 }
 
 void	WrongAnimal::setType(std::string type) {
-	this->type = type;
+	this->_type = type;
 }
 
 std::string WrongAnimal::getType ( void ) const {
-	return (this->type);
+	return (this->_type);
 }
 
 void	WrongAnimal::printMsg(const std::string& msg) const {

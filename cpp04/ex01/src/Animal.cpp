@@ -1,19 +1,19 @@
 #include "Animal.hpp"
 
 Animal::Animal ():
-type("Animal") {
+_type("Animal") {
 	this->printMsg("Generic default constructor called");
 }
 
 Animal::Animal (const Animal& other): 
-type(other.type) {
+_type(other._type) {
 	this->printMsg("Generic copy constructor called");
 }
 
 Animal& Animal::operator= (const Animal& other) {
 	this->printMsg("Generic copy assignment operator called");
 	if (this != &other) {
-		setType(other.type);
+		setType(other._type);
 	}
 	return (*this);
 }
@@ -27,11 +27,11 @@ void	Animal::makeSound( void ) const {
 }
 
 void	Animal::setType(std::string type) {
-	this->type = type;
+	this->_type = type;
 }
 
 std::string Animal::getType ( void ) const {
-	return (this->type);
+	return (this->_type);
 }
 
 void	Animal::printMsg(const std::string& msg) const {

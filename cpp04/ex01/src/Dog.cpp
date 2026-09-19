@@ -2,18 +2,20 @@
 
 Dog::Dog(): Animal(), _brain(new Brain()) {
     this->printMsg("Constructor Au Au called!");
-    this->setType("Dog");
+    setType("Dog");
 }
 
 Dog::Dog (const Dog& other): Animal() {
 	this->printMsg("Copy constructor Au Au called");
-    this->type = other.type;
+    setType(other._type);
+	this->_brain = other._brain;
 }
 
 Dog& Dog::operator= (const Dog& other) {
 	this->printMsg("Copy assignment operator Au Au called");
 	if (this != &other) {
-		this->type = other.type;
+		setType(other._type);
+		this->_brain = other._brain;
 	}
 	return (*this);
 }
@@ -27,11 +29,11 @@ void	Dog::makeSound( void ) const {
 }
 
 void	Dog::setType(std::string type) {
-	this->type = type;
+	this->_type = type;
 }
 
 std::string Dog::getType ( void ) const {
-	return (this->type);
+	return (this->_type);
 }
 
 void	Dog::printMsg(const std::string& msg) const {
