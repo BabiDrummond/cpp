@@ -6,56 +6,40 @@
 
 int main( void ) {
 	{
-		std::cout << "===============TESTS SUBJECT===============" << std::endl;
-		const Animal* meta = new Animal();
-		const Animal* j = new Dog();
-		const Animal* i = new Cat();
-	
-		std::cout << j->getType() << " " << std::endl;
-		std::cout << i->getType() << " " << std::endl;
-	
-		i->makeSound(); //will output the cat sound!
-		j->makeSound();
-		meta->makeSound();
+		std::cout << "===============ANIMALS===============" << std::endl;
+		Animal *animals[10];
 
-		delete(meta);
-		delete(i);
-		delete(j);
+		for (int i = 0; i < 5; i++) {
+			animals[i] = new Cat();
+		}
+		for (int i = 5; i < 10; i++) {
+			animals[i] = new Dog();
+		}
+
+		std::cout << "I am a " << animals[1]->getType() << std::endl;
+		animals[1]->makeSound();
+		std::cout << "I am a " << animals[5]->getType() << std::endl;
+		animals[5]->makeSound();
+
+		for (int i = 0; i < 10; i++) {
+			delete (animals[i]);
+		}
 	}
 	{
-		std::cout << "===============ANIMAL===============" << std::endl;
-		Animal	animal;
-
-		animal.makeSound();
-		std::cout << "I am an " << animal.getType() << std::endl;
-	}
-	{
-		std::cout << "===============CAT===============" << std::endl;
-		Cat		cat;
+		std::cout << "===============DEEP COPIES===============" << std::endl;
+		Dog juninho;
+		Dog miltinho;
 		
-		cat.makeSound();
-		cat.getType();
-		std::cout << "I am a " << cat.getType() << std::endl;
-	}
-	{
-		std::cout << "===============DOG===============" << std::endl;
-		Dog		dog;
-		
-		dog.makeSound();
-		std::cout << "I am a " << dog.getType() << std::endl;
-	}
-	{
-		std::cout << "===============WRONG ANIMALS===============" << std::endl;
-		const WrongAnimal* meta = new WrongAnimal();
-		const WrongAnimal* i = new WrongCat();
+		juninho.getBrain()->setIdeas("i think i'm a dog");
+		miltinho.getBrain()->setIdeas("i think i'm a butterfly");
 	
-		std::cout << i->getType() << " " << std::endl;
-	
-		i->makeSound(); //will output the animal sound!
-		meta->makeSound();
+		std::cout << juninho.getBrain()->getIdea(0) << std::endl;
+		std::cout << miltinho.getBrain()->getIdea(0) << std::endl;
 
-		delete(meta);
-		delete(i);
+		juninho = miltinho;
+		miltinho.getBrain()->setIdeas("FOG");
+		std::cout << juninho.getBrain()->getIdea(0) << std::endl;
+		std::cout << miltinho.getBrain()->getIdea(0) << std::endl;
 	}
 	return (0);
 }

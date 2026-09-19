@@ -18,6 +18,9 @@ class Cat: public Animal {
 		void		setType( std::string type );
 		std::string	getType ( void ) const;
 
+		void		setBrain(Brain *brain);
+		Brain*		getBrain();
+
 		void		printMsg(const std::string& msg) const;
 };
 
