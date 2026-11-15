@@ -21,12 +21,17 @@ class Bureaucrat {
 		void				decrementGrade();
 };
 
-class GradeTooHighException : public std::exception {
+class IBureaucratException : public std::exception {
+	public:
+		const char *what() const throw() = 0;
+};
+
+class GradeTooHighException : public IBureaucratException {
 	public:
 		const char *what() const throw();
 };
 
-class GradeTooLowException : public std::exception {
+class GradeTooLowException : public IBureaucratException {
 	public:
 		const char *what() const throw();
 };
